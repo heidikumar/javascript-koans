@@ -20,28 +20,32 @@ describe("About Applying What We Have Learnt", function() {
 
     var i,j,hasMushrooms, productsICanEat = [];
 
-    for (i = 0; i < products.length; i+=1) {
-        if (products[i].containsNuts === false) {
+    for (i = 0; i < products.length; i+=1) {                              //go through all products
+        if (products[i].containsNuts === false) {                         //filter contains nuts
             hasMushrooms = false;
-            for (j = 0; j < products[i].ingredients.length; j+=1) {
+            for (j = 0; j < products[i].ingredients.length; j+=1) {       //any ingredient with mushrooms is a no    
                if (products[i].ingredients[j] === "mushrooms") {
-                  hasMushrooms = true;
+                  hasMushrooms = true;                                    
                }
             }
             if (!hasMushrooms) productsICanEat.push(products[i]);
         }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
 
       var productsICanEat = [];
 
+      productsICanEat = _(products).chain()
+                .filter(function(x){this.containsNuts === false};)
+                .all(this.ingredients, function(x){return x !== "mushrooms";};);
+
       /* solve using filter() & all() / any() */
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
